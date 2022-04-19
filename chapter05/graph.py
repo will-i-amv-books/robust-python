@@ -1,10 +1,10 @@
-from typing import Union, TypeVar, Generic
+from typing import Union, TypeVar, Generic, Tuple, List
 from collections import defaultdict
 
 
-Ingredient = tuple[str, int, str]
-Recipe = tuple[Union[int, Ingredient]]
-Cookbook = tuple[str, int]
+Ingredient = Tuple[str, int, str]
+Recipe = Tuple[Union[int, Ingredient]]
+Cookbook = Tuple[str, int]
 
 Node = TypeVar("Node")
 Edge = TypeVar("Edge")
@@ -12,12 +12,12 @@ Edge = TypeVar("Edge")
 
 class Graph(Generic[Node, Edge]):
     def __init__(self):
-        self.edges: dict[Node, list[Edge]] = defaultdict(list)
+        self.edges: dict[Node, List[Edge]] = defaultdict(List)
 
     def add_relation(self, node: Node, to: Edge):
         self.edges[node].append(to)
 
-    def get_relations(self, node: Node) -> list[Edge]:
+    def get_relations(self, node: Node) -> List[Edge]:
         return self.edges[node]
 
 
